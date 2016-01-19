@@ -16,4 +16,5 @@ pip install -r requirements.txt
 
 ### Tests
 
-To run tests, just run `nosetests` from the project root.
+To run tests, just run `./test.py`. Alternatively, you could run
+`APP_ENV=testing nosetests`.

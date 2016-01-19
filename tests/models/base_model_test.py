@@ -5,15 +5,14 @@ from datetime import datetime, timedelta
 from app.models import BaseModel
 from peewee import SqliteDatabase, CharField
 
-database = SqliteDatabase("test.db")
 
 class TestModel(BaseModel):
   test = CharField(null=True)
 
   class Meta:
-    database = database
+    database = Database
 
-# database.create_tables([TestModel])
+Database.create_tables([TestModel])
 
 class BaseModelTest(unittest.TestCase):
   def test_created_at(self):
