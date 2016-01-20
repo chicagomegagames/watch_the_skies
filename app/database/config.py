@@ -1,5 +1,4 @@
 from peewee import Proxy, SqliteDatabase
-from .models import *
 from os import environ
 
 

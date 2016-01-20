@@ -9,7 +9,7 @@ class BaseModel(Model):
   def save(self, **kwargs):
     now = datetime.now()
     if self.created_at is None:
-    	self.created_at = now
+      self.created_at = now
 
     self.updated_at = now
     super().save(**kwargs)

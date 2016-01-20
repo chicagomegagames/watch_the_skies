@@ -2,7 +2,7 @@ from tests.test_helper import *
 from expects import *
 from datetime import datetime, timedelta
 
-from app.models import BaseModel
+from app.database import BaseModel
 from peewee import SqliteDatabase, CharField
 
 
