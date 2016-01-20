@@ -1,5 +1,4 @@
 from tests.test_helper import *
-from expects import *
 from datetime import date
 
 from app.database import Game
