@@ -1,6 +1,6 @@
 from tests.test_helper import *
 
-class TestDiplomaticRelationship(unittest.TestCase):
+class TestDiplomaticRelationship(TestBase):
   def test_creates_audit_log(self):
     game = GameFactory()
     game.save()

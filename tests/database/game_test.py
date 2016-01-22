@@ -3,7 +3,7 @@ from datetime import date
 
 from app.database import Game
 
-class gametest(unittest.TestCase):
+class gametest(TestBase):
   def test_game(self):
     game = Game.create(
       location="Chicago",
