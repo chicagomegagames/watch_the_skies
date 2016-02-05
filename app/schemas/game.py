@@ -1,4 +1,4 @@
-game = {
+game_create = {
     "type": "object",
     "properties": {
         "location": {"type": "string"},
@@ -6,4 +6,12 @@ game = {
         "turn": {"type": "number", "optional": True},
     },
     "required": ["location"]
+}
+
+game_id = {
+    "type": "object",
+    "properties": {
+        "id": {"type": "number"},
+    },
+    "required": ["id"]
 }
