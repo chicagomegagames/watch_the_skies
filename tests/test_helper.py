@@ -22,6 +22,7 @@ class TestBase(unittest.TestCase):
       DiplomaticRelationshipsAudit,
       Terror,
       PR,
+      MediaArticle,
     ])
 
   def tearDown(self):
@@ -33,4 +34,5 @@ class TestBase(unittest.TestCase):
       DiplomaticRelationshipsAudit,
       Terror,
       PR,
+      MediaArticle,
     ])
