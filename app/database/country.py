@@ -34,6 +34,12 @@ class Country(BaseModel):
       ((DiplomaticRelationship.country2 == self) | (DiplomaticRelationship.country2 == self))
     )
 
+  def current_pr(self):
+    current_pr = 0
+    for pr_change in self.pr_changes:
+      current_pr += pr_change.delta
+    return current_pr
+
 
   @staticmethod
   def initialize_defaults(game):

@@ -1,6 +1,5 @@
 from tests.test_helper import *
 
-
 class TerrorTest(TestBase):
   def test_terror(self):
     game = GameFactory()
