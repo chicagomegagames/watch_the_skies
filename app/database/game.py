@@ -8,3 +8,9 @@ class Game(BaseModel):
 
   class Meta:
     database = Database
+
+  def terror(self):
+    terror_count = 0
+    for terror_change in self.terror_changes:
+      terror_count += terror_change.delta
+    return terror_count
