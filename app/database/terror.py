@@ -16,3 +16,9 @@ class Terror(BaseModel):
     except Exception as e:
       self.game = self.user.game
     super().save(**kwargs)
+
+  def __repr__(self):
+      return str(self.id) + " " + str(self.delta)
+
+  def __str__(self):
+      return self.__repr__()

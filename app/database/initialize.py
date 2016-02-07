@@ -8,4 +8,6 @@ def initialize_database():
     Country,
     DiplomaticRelationship,
     DiplomaticRelationshipsAudit,
+    Terror,
+    PR
   ])
