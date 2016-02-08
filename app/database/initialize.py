@@ -9,5 +9,6 @@ def initialize_database():
     DiplomaticRelationship,
     DiplomaticRelationshipsAudit,
     Terror,
-    PR
+    PR,
+    MediaArticle
   ])

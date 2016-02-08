@@ -11,6 +11,17 @@ class MediaArticle(BaseModel):
   game = ForeignKeyField(Game, related_name = "media_articles")
   user = ForeignKeyField(User, related_name = "media_articles")
 
+  def __dict__(self):
+    return {
+      "title": self.title,
+      "turn": self.turn,
+      "author": self.author,
+      "organization": self.organization,
+      "body": self.body,
+      "game": self.game.id,
+      "user": self.user.id
+    }
+
   class Meta:
     database = Database
 

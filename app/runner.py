@@ -1,7 +1,7 @@
 from flask import Flask, request, Response, jsonify
 import json
 from jsonschema import validate, ValidationError
-from database import Game, Country, Terror, User, PR, initialize
+from database import Game, Country, Terror, User, PR, MediaArticle, initialize
 import schemas
 import time
 from peewee import OperationalError
@@ -98,14 +98,37 @@ def news():
     data = {}
     code = 500
     rType = "application/json"
+    inputJson = request.get_json();
 
     if request.method == 'POST':
-        app.logger.debug(request.get_data())
-        code = 501
-        data = build_error('POST Not implemented')
+        try:
+            validate(inputJson, schemas.post_article)
+        except ValidationError as sErr:
+            code = 400
+            data = build_error('Invalid JSON payload', extras=str(sErr))
+        else:
+            code = 204
+
+            article = MediaArticle()
+            article.title = inputJson["title"]
+            article.author = inputJson["author"]
+            article.organization = inputJson["organization"]
+            article.body = inputJson["body"]
+            article.turn = inputJson["turn"]
+            article.game = Game.get(Game.id == inputJson["game"])
+            article.user = User.get(User.id == inputJson["user"])
+
+            article.save()
     elif request.method == 'GET':
-        code = 501
-        data = build_error('GET Not implemented')
+        try:
+            validate(inputJson, schemas.get_articles)
+        except ValidationError as sErr:
+            code = 400
+            data = build_error('Invalid JSON payload', extras=str(sErr))
+        else:
+            code = 200
+            articles = MediaArticle.select().where(MediaArticle.game == inputJson["game"] and MediaArticle.turn == inputJson["turn"])
+            data = {"articles": [a.__dict__() for a in articles]}
        
     return (jsonify(**data), code, {'Content-Type': rType})
 
